@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 int
 main(int argc, char *argv[])
 {
     printf("hello world (pid:%d)\n", (int) getpid());
-    int rc = fork();
+    int rc = fork(); 
+    printf("this is rc - %d\n", rc);
     if (rc < 0) {
         // fork failed; exit
         fprintf(stderr, "fork failed\n");

@@ -1,0 +1,1 @@
+From the graph produced, we can clearly see that as page size increases, the average total time elapsed decreases. This suggests that the caching mechanism from the page table leads to efficiency.

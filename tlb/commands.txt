@@ -1,0 +1,15 @@
+~/ostep-code/tlb (main*) » gcc -o tlb tlb.c -lrt                                                                                                                                                                    kennykguo@DESKTOP-P0KEPS2
+tlb.c: In function ‘main’:
+tlb.c:11:1: warning: implicit declaration of function ‘CPU_ZERO’ [-Wimplicit-function-declaration]
+   11 | CPU_ZERO(&cpuset);
+      | ^~~~~~~~
+tlb.c:12:1: warning: implicit declaration of function ‘CPU_SET’ [-Wimplicit-function-declaration]
+   12 | CPU_SET(0, &cpuset);
+      | ^~~~~~~
+tlb.c:13:5: warning: implicit declaration of function ‘sched_setaffinity’ [-Wimplicit-function-declaration]
+   13 | if (sched_setaffinity(0, sizeof(cpu_set_t), &cpuset) != 0) {
+      |     ^~~~~~~~~~~~~~~~~
+/usr/bin/ld: /tmp/ccfG9J3Z.o: in function `main':
+tlb.c:(.text+0x4a): undefined reference to `CPU_ZERO'
+/usr/bin/ld: tlb.c:(.text+0x63): undefined reference to `CPU_SET'
+collect2: error: ld returned 1 exit status
