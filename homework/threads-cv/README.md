@@ -43,7 +43,7 @@ producer produces), `-m` controls the size of the shared buffer (greater than or
 equal to one), and `-p` and `-c` set how many producers and consumers there are,
 respectively.
 
-What is more interesting are the two sleep strings, one for producers, and one
+What is more interesting are the two  s, one for producers, and one
 for consumers. These flags allow you to make each thread sleep at certain
 points in an execution and thus switch to other threads; doing so allows you
 to play with each solution and perhaps pinpoint specific problems or study

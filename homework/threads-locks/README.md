@@ -228,6 +228,7 @@ thread must be run.
 One last example: run the same thing above, but with a smaller interrupt
 frequency. Here is what that will look like:
 
+
 ```sh
 [mac Race-Analyze] ./x86.py -p looping-race-nolock.s -t 2 -a bx=1 -M 2000 -i 2
 

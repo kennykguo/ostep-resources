@@ -17,21 +17,22 @@
 lea flag, %fx
 
 # assume thread ID is in bx (0 or 1, scale by 4 to get proper flag address)
+# calculate the other thread ID in cx
 mov %bx, %cx   # bx: self, now copies to cx
 neg %cx        # cx: - self
 add $1, %cx    # cx: 1 - self
 
 .acquire
 mov $1, 0(%fx,%bx,4)    # flag[self] = 1
-mov %cx, turn           # turn       = 1 - self
+mov %cx, turn           # turn       = 1 - self (give other thread preference if there is a conflict)
 
 .spin1
-mov 0(%fx,%cx,4), %ax   # flag[1-self]
+mov 0(%fx,%cx,4), %ax   # flag[1-self] (load the other thread's flag value)
 test $1, %ax            
 jne .fini               # if flag[1-self] != 1, skip past loop to .fini
 
 .spin2                  # just labeled for fun, not needed
-mov turn, %ax
+mov turn, %ax           
 test %cx, %ax           # compare 'turn' and '1 - self'
 je .spin1               # if turn==1-self, go back and start spin again
 
